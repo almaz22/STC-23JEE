@@ -1,43 +1,24 @@
 package part1.lesson02.task01;
 
+import java.util.Scanner;
+
 /**
  * HelloWorld
- * Класс для моделирования ошибки «NullPointerException».
+ * Класс для моделирования собственной ошибки через оператор throw.
+ * В данном классе пользователя попросят написать "Hello, World!", и если он не поздоровается, то это будет ошибкой
  *
  * @author Almaz_Kamalov
  */
 public class HelloWorld {
 
-    String helloWorld;
-
-    String getHelloWorld() {
-        return helloWorld;
-    }
-
-    public HelloWorld() {
-    }
-
-    public HelloWorld(String helloWorld) {
-        this.helloWorld = helloWorld;
-    }
-
-    /**
-     * Метод предназначен для моделирования ошибки NPE, вызвав Getter с пустым значением
-     * и реализацией любого метода класса String. Таким образом мы получим ошибку NPE.
-     * @return - возвращаем переменную helloWorld
-     */
-    String testNPE () {
-        return getHelloWorld().toUpperCase();
-    }
-
     public static void main(String[] args)  {
-        // Неверная реализация
-        HelloWorld helloWorld = new HelloWorld();
-        System.out.println(helloWorld.testNPE());
 
-        // Верная реализация
-        HelloWorld helloWorld1 = new HelloWorld("Hello, World!");
-        System.out.println(helloWorld1.testNPE());
+        Scanner in = new Scanner(System.in);
+        System.out.println("Say: \"Hello, World!\"");
+        String helloWorld = in.nextLine();
+
+        if (!helloWorld.contains("hello"))
+            throw new RuntimeException("Не поздоровался!");
+        System.out.println(helloWorld);
     }
-
 }
