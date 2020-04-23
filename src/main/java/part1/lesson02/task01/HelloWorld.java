@@ -2,42 +2,25 @@ package part1.lesson02.task01;
 
 /**
  * HelloWorld
- * Класс для моделирования ошибки «NullPointerException».
+ * Класс для моделирования ошибки «ArrayIndexOutOfBoundsException».
  *
  * @author Almaz_Kamalov
  */
 public class HelloWorld {
 
-    String helloWorld;
-
-    String getHelloWorld() {
-        return helloWorld;
-    }
-
-    public HelloWorld() {
-    }
-
-    public HelloWorld(String helloWorld) {
-        this.helloWorld = helloWorld;
-    }
-
-    /**
-     * Метод предназначен для моделирования ошибки NPE, вызвав Getter с пустым значением
-     * и реализацией любого метода класса String. Таким образом мы получим ошибку NPE.
-     * @return - возвращаем переменную helloWorld
-     */
-    String testNPE () {
-        return getHelloWorld().toUpperCase();
-    }
-
     public static void main(String[] args)  {
-        // Неверная реализация
-        HelloWorld helloWorld = new HelloWorld();
-        System.out.println(helloWorld.testNPE());
+
+        String helloWorld = "Hello, World!";
+        char[] chars = helloWorld.toCharArray();
+
+        // Неверная реализация из-за обращения к элементу массива по превыщающему размера массива индексу
+        for (int i = 0; i < chars.length + 1; i++) {
+            System.out.print(chars[i]);
+        }
 
         // Верная реализация
-        HelloWorld helloWorld1 = new HelloWorld("Hello, World!");
-        System.out.println(helloWorld1.testNPE());
+        for (char aChar : chars) {
+            System.out.print(aChar);
+        }
     }
-
 }
