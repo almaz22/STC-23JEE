@@ -1,5 +1,7 @@
 package part1.lesson02.task02;
 
+import java.util.Random;
+
 /**
  * Task02 - Программа, генерирующая N случайных чисел. Для каждого числа k из N вычисляется квадратный корень q.
  * Если квадрат целой части q числа равен k, то выводим это число на экран.
@@ -13,10 +15,12 @@ public class Task02 {
         try {
             int N = 100;
             for (int i = 0; i < N; i++) {
-                double random = Math.random();
 
-                int k = (int) (random * N) * ((random < 0.5) ? -1 : 1);
-//                int k = (int) (random * N);
+//                double random = Math.random();
+//                int k = (int) (random * N) * ((random < 0.5) ? -1 : 1);
+
+                Random rnd = new Random();
+                int k = rnd.nextInt(100);
 
                 if (k < 0)
                     throw new RuntimeException("Число отрицательное, нельзя вычислить квадратный корень");
