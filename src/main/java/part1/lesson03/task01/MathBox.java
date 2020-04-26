@@ -1,9 +1,6 @@
 package part1.lesson03.task01;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /**
  * MathBox - объект. Конструктор принимает массив объектов Integer
@@ -12,7 +9,7 @@ import java.util.Set;
  */
 public class MathBox {
 
-    private Set<Number> numbers = new HashSet<>();
+    private ArrayList<Number> numbers = new ArrayList<>();
 
     public MathBox(Number[] numbers) {
         this.numbers.addAll(Arrays.asList(numbers));
@@ -36,7 +33,7 @@ public class MathBox {
      * @param splitter - делитель
      */
     public void splitter (int splitter) {
-        Set<Number> numberSet = new HashSet<>();
+        ArrayList<Number> numberSet = new ArrayList<>();
         for (Number number :
                 numbers) {
             number = number.doubleValue() / splitter;
