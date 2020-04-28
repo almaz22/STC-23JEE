@@ -8,12 +8,16 @@ import java.util.Objects;
  *
  * @author Almaz_Kamalov
  */
-public class MathBox03 extends ObjectBox03 {
+public class MathBox03 extends ObjectBox03<Number> {
 
     private final Number[] numbers;
 
+    private final Number[] constructNumber;
+
     public MathBox03(Number[] numbers) {
         this.numbers = numbers;
+        this.constructNumber = new Number[numbers.length];
+        System.arraycopy(numbers, 0, this.constructNumber, 0, this.constructNumber.length);
     }
 
     /**
@@ -21,8 +25,7 @@ public class MathBox03 extends ObjectBox03 {
      */
     public int summator() {
         int sum = 0;
-        for (Number number :
-                numbers) {
+        for (Number number : numbers) {
             sum += number.intValue();
         }
         return sum;
@@ -54,12 +57,12 @@ public class MathBox03 extends ObjectBox03 {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MathBox03 mathBox = (MathBox03) o;
-        return numbers.equals(mathBox.numbers);
+        return Arrays.equals(constructNumber, mathBox.constructNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Arrays.hashCode(numbers));
+        return Objects.hash(Arrays.hashCode(constructNumber));
     }
 
     @Override

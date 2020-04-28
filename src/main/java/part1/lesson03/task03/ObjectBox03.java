@@ -10,7 +10,7 @@ import java.util.Arrays;
  *
  * @author Almaz_Kamalov
  */
-public class ObjectBox03 {
+public class ObjectBox03<T> {
 
     private Object[] objects;
 
@@ -55,7 +55,7 @@ public class ObjectBox03 {
      * Старый массив присвает значение нового массива
      * @param obj - элемент вставки
      */
-    public void addObject (Object obj) {
+    public void addObject (T obj) {
 //        if (obj.getClass() != this.objects.getClass())
 //            throw new RuntimeException("Объекты разные");
         int size = this.size();
@@ -72,7 +72,7 @@ public class ObjectBox03 {
      * Старому массиву присваеваем новый массив без удаляемых элементов
      * @param o - удаляемый элемент
      */
-    public void deleteObject(Object o) {
+    public void deleteObject(T o) {
         if (this.isEmpty()) {
             if (this.contains(o)) {
                 Object[] objects = new Object[this.size() - 1];
