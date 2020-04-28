@@ -19,13 +19,13 @@ public class MathBox03 extends ObjectBox03 {
     /**
      * Метод, выводит на экран сумму всех элементов коллекции
      */
-    public void summator() {
+    public int summator() {
         int sum = 0;
         for (Number number :
                 numbers) {
             sum += number.intValue();
         }
-        System.out.println(sum);
+        return sum;
     }
 
     /**

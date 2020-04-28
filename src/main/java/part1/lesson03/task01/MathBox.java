@@ -49,7 +49,6 @@ public class MathBox {
     public void remove(Integer i) {
         Number number = i.doubleValue();
         numbers.remove(number);
-        numbers.remove(i);
     }
 
     /**

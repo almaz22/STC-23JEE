@@ -13,7 +13,7 @@ public class Main_01_03_03 {
         Number[] numbers = new Number[] {100, 10, 50, 20, 25, 115, 22, 43, 27, 17};
         MathBox03 mathBox = new MathBox03(numbers);
         mathBox.addObject(200);
-        mathBox.summator();
+        System.out.println(mathBox.summator());
         mathBox.print();
         mathBox.splitter(5);
         mathBox.deleteObject(2);
