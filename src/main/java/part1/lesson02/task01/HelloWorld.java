@@ -8,9 +8,8 @@ package part1.lesson02.task01;
  */
 public class HelloWorld {
 
-    String helloWorld;
-
-    String getHelloWorld() {
+    private String helloWorld;
+    public String getHelloWorld() {
         return helloWorld;
     }
 
