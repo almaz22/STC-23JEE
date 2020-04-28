@@ -17,7 +17,7 @@ public class HelloWorld {
         System.out.println("Say: \"Hello, World!\"");
         String helloWorld = in.nextLine();
 
-        if (!helloWorld.contains("hello") && !helloWorld.contains("Hello"))
+        if (!helloWorld.toLowerCase().contains("hello"))
             throw new RuntimeException("Не поздоровался!");
         System.out.println("Hello, World!");
     }
