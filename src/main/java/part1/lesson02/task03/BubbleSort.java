@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Almaz_Kamalov
  */
-public class BubbleSort implements SortImpl{
+public class BubbleSort implements Sort {
 
     private final ArrayList<Person> people;
 

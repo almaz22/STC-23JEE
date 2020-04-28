@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author Almaz_Kamalov
  */
-public class QuickSort implements SortImpl {
+public class QuickSort implements Sort {
 
     private final ArrayList<Person> people;
 
