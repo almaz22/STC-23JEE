@@ -1,7 +1,5 @@
 package part1.lesson02.task03;
 
-import java.util.ArrayList;
-
 /**
  * Sort - интерфейс сортировок
  * Метод sort - сортировка
