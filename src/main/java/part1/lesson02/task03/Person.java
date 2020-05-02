@@ -14,6 +14,18 @@ public class Person implements Comparable<Person>{
     Sex sex;
     String name;
 
+    public int getAge() {
+        return age;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public Person(int age, Sex sex, String name) {
         if (age < 0 || age > 100)
             throw new RuntimeException("Введите возраст от 0 до 100. Вы ввели: age = " + age);
@@ -37,8 +49,22 @@ public class Person implements Comparable<Person>{
         }
     }
 
+    // Старая реализация, сравнение только по алфавиту
+//    public int compareTo(Person o) {
+//        return this.name.compareTo(o.name);
+//    }
+
+    // Новая, верная реализация
     public int compareTo(Person o) {
-        return this.name.compareTo(o.name);
+        // Сравниваем по полу, сначала мужчины
+        int result = this.sex.compareTo(o.sex);
+        // Если пол одинаковый, сравниваем по старшенству, старшие выше
+        if(result == 0)
+            result = o.age - this.age;
+        // Если пол и возраст одинаковый, сортируем по алфавиту
+        if(result == 0)
+            result = this.name.compareTo(o.name);
+        return result;
     }
 
     @Override

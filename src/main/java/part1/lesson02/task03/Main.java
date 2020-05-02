@@ -61,7 +61,7 @@ public class Main {
      * Генерация случайного возраста
      * @return - возвращает случайное число от 0 до 100
      */
-    static int randomAge() {
+    public static int randomAge() {
         return new Random().nextInt(100);
     }
 
@@ -69,7 +69,7 @@ public class Main {
      * Генерация случайного пола, вероятность 50/50
      * @return - возвращает мужской или женский пол
      */
-    static Person.Sex randomSex() {
+    public static Person.Sex randomSex() {
         return new Random().nextInt(2) == 0 ? MAN : WOMAN;
     }
 
@@ -78,7 +78,7 @@ public class Main {
      * @param sex - пол, мужской или женский
      * @return - возврашает имя
      */
-    static String randomName(Person.Sex sex) {
+    public static String randomName(Person.Sex sex) {
         int rnd = new Random().nextInt(100);
         String fileName = sex == MAN ? "src\\main\\resources\\maleNames" : "src\\main\\resources\\femaleNames";
 

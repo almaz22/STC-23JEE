@@ -25,6 +25,12 @@ public class BubbleSort implements Sort {
         if (!people.isEmpty()) {
             for (int i = 0; i + 1 < people.size(); i++) {
                 for (int j = 0; j + 1 < people.size() - i; j++) {
+                    // Преимущество новой реализации при помощи метода compareTo
+                    if (people.get(j + 1).compareTo(people.get(j)) < 0) {
+                        swap(j, j + 1);
+                    }
+                    // Старая реализация
+                    /*
                     if (people.get(j + 1).sex.getSex() < people.get(j).sex.getSex()) {
                         swap(j, j + 1);
                     } else {
@@ -47,7 +53,7 @@ public class BubbleSort implements Sort {
                                 }
                             }
                         }
-                    }
+                    }*/
                 }
             }
         }
