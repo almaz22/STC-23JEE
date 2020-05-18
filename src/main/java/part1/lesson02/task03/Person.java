@@ -1,5 +1,7 @@
 package part1.lesson02.task03;
 
+import java.io.Serializable;
+
 /**
  * Person - объект. Содержит поля
  * age - возраст
@@ -9,7 +11,7 @@ package part1.lesson02.task03;
  *
  * @author Almaz_Kamalov
  */
-public class Person implements Comparable<Person>{
+public class Person implements Comparable<Person>, Serializable {
     int age;
     Sex sex;
     String name;

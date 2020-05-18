@@ -1,8 +1,8 @@
 package part1.lesson04.task01;
 
-import org.jetbrains.annotations.NotNull;
 import part1.lesson02.task03.Person;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * @author Almaz_Kamalov
  */
-public class Pet implements Identified<String>, Comparable<Pet>  {
+public class Pet implements Identified<String>, Comparable<Pet>, Serializable {
     private final String id;
     private String name;
     private Person owner;
@@ -75,7 +75,7 @@ public class Pet implements Identified<String>, Comparable<Pet>  {
     }
 
     @Override
-    public int compareTo(@NotNull Pet o) {
+    public int compareTo(Pet o) {
         // Сравниваем по хозяину
         int result = this.owner.compareTo(o.owner);
         // Сортируем по алфавиту
