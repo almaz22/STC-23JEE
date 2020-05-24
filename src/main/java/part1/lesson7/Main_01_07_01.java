@@ -1,9 +1,11 @@
 package part1.lesson7;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Main_01_07_01
@@ -29,10 +31,11 @@ public class Main_01_07_01 {
         for (int i = 0; i < arraySize; i++) {
             factorialNumbers[i] = new FactorialNumber(new Random().nextInt(10));
         }
+        ConcurrentHashMap<Integer, BigInteger> results = new ConcurrentHashMap<>();
         // Создаем пул потоков. В качестве потока играет класс CalcFactorialThread
         List<Thread> factorialThreads = new ArrayList<>();
         for (int i = 0; i < arraySize; i++) {
-            Thread thread = new CalcFactorialThread(factorialNumbers[i]);
+            Thread thread = new CalcFactorialThread(factorialNumbers[i],results);
             factorialThreads.add(thread);
         }
         // Запускаем все потоки сразу
