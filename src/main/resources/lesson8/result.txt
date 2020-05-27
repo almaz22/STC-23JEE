@@ -1,0 +1,6 @@
+part1.lesson04.task01.Pet
+serialVersionUID: 1
+id: id
+name: Blansh
+owner: Пол: MAN	Возраст: 20	Имя: Tom
+weight: 3

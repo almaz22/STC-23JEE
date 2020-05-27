@@ -22,7 +22,7 @@ public class MyClassLoader extends ClassLoader {
 
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
-        System.out.println("SomeClass starts work: " + name);
+//        System.out.println("SomeClass starts work: " + name);
         if ((PACKAGE + "." + "SomeClass").equals(name)) {
             try {
                 byte[] bytes = Files.readAllBytes(Paths.get(PATH + "SomeClass.class"));
