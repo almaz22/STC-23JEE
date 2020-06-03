@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration>
+    <Appenders>
+<!--        <JDBC name="postgresql" tablename="logs">-->
+<!--            <DriverManager connectionString="jdbc:postgresql://localhost:5432/postgres" userName="postgres" password="qwerty" driverClassName="org.postgresql.Driver" />-->
+<!--            <ConnectionFactory class="part2.lesson15.connection.ConnectionManagerImpl" method="getConnection" />-->
+<!--            <Column name="date" isEventTimestamp="true" />-->
+<!--            <Column name="level" pattern="%level" isUnicode="false" />-->
+<!--            <Column name="message" pattern="%message" isUnicode="false" />-->
+<!--            <Column name="exception" pattern="%ex{full}" isUnicode="false" />-->
+<!--        </JDBC>-->
+        <Console name="stdout" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %p %m%n"/>
+        </Console>
+        <File name="fout" fileName="logs.log" append="true">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %m%n</Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Logger name="part2.lesson15.Main_02_15_01" level="trace" additivity="false">
+            <AppenderRef ref="fout"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="stdout"/>
+            <AppenderRef ref="fout"/>
+<!--            <AppenderRef ref="postgresql"/>-->
+        </Root>
+    </Loggers>
+</Configuration>

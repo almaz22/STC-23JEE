@@ -1,4 +1,4 @@
-package part1.lesson04.task01;
+package part1.lesson04;
 
 import java.io.Serializable;
 import java.util.Collection;

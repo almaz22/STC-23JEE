@@ -1,4 +1,4 @@
-package part1.lesson04.task01;
+package part1.lesson04;
 
 import part1.lesson02.task03.Person;
 
