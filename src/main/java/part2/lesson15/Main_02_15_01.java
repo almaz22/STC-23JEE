@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import part2.lesson15.connection.ConnectionManager;
 import part2.lesson15.connection.ConnectionManagerImpl;
-import part2.lesson15.dao.RoleDAOImpl;
 import part2.lesson15.utils.DBUtil;
 
 import java.sql.Connection;
