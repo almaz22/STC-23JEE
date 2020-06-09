@@ -19,11 +19,11 @@ import java.util.List;
 public class UserRoleDAOImpl implements UserRoleDAO{
     private final Connection connection;
 
-    private final String SELECT_ALL_USER_ROLES = "SELECT id, user_id, role_id FROM user_roles";
-    private final String INSERT_USER_ROLE = "INSERT INTO user_roles VALUES (?, ?, ?)";
-    private final String UPDATE_USER_ROLE = "UPDATE user_roles SET role_id = ? WHERE user_id = ?";
+    public static final String SELECT_ALL_USER_ROLES = "SELECT id, user_id, role_id FROM user_roles";
+    public static final String INSERT_USER_ROLE = "INSERT INTO user_roles VALUES (?, ?, ?)";
+    public static final String UPDATE_USER_ROLE = "UPDATE user_roles SET role_id = ? WHERE user_id = ?";
 
-    private Logger logger = LogManager.getLogger(UserRoleDAOImpl.class);
+    private final Logger logger = LogManager.getLogger(UserRoleDAOImpl.class);
 
     public UserRoleDAOImpl(Connection connection) {
         this.connection = connection;

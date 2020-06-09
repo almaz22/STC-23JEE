@@ -29,8 +29,10 @@
         </RollingFile>
     </Appenders>
     <Loggers>
-        <Logger name="part2.lesson15.Main_02_15_01" level="trace" additivity="false">
+        <Logger name="part2.lesson15.Main_02_15_01" level="debug" additivity="false">
             <AppenderRef ref="fout"/>
+        </Logger>
+        <Logger name="part2.lesson15.dao.RoleDAOImplTest" level="trace" additivity="false">
             <AppenderRef ref="RollingFile"/>
         </Logger>
         <Root level="info">

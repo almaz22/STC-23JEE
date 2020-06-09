@@ -2,7 +2,6 @@ package part2.lesson15.dao;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import part2.lesson15.connection.ConnectionManagerImpl;
 import part2.lesson15.entity.Role;
 
 import java.sql.Connection;
@@ -19,11 +18,11 @@ import java.util.List;
  */
 public class RoleDAOImpl implements RoleDAO {
     private final Connection connection;
-    private Logger logger = LogManager.getLogger(RoleDAOImpl.class);
+    private final Logger logger = LogManager.getLogger(RoleDAOImpl.class);
 
-    private final String SELECT_ROLES = "SELECT id, description FROM roles";
-    private final String INSERT_ROLE = "INSERT INTO roles VALUES (?, ?)";
-    private final String DELETE_ROLE = "DELETE FROM roles WHERE id = ?";
+    public static final String SELECT_ROLES = "SELECT id, description FROM roles";
+    public static final String INSERT_ROLE = "INSERT INTO roles VALUES (?, ?)";
+    public static final String DELETE_ROLE = "DELETE FROM roles WHERE id = ?";
 
     public RoleDAOImpl(Connection connection) {
         this.connection = connection;

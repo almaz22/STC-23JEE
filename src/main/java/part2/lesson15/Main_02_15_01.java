@@ -11,12 +11,24 @@ import java.sql.SQLException;
 
 /**
  * Main_02_15_01
+ * Задание 1. Взять за основу предметную область выбранную на занятии по UML:
+ *      Спроектировать базу данных для выбранной предметной области (минимум три таблицы).
+ *      Типы и состав полей в таблицах на ваше усмотрение.
+ *      Связи между таблицами делать не обязательно.
+ *
+ * Задание 2. Через JDBC интерфейс описать CRUD операции с созданными таблицами:
+ *      Применить параметризованный запрос.
+ *      Применить батчинг.
+ *      Использовать ручное управление транзакциями.
+ *      Предусмотреть использование savepoint при выполнении логики из нескольких запросов.
+ *      Предусмотреть rollback операций при ошибках.
+ *      Желательно предусмотреть метод сброса и инициализации базы данных.
  *
  * @author Almaz_Kamalov
  */
 public class Main_02_15_01 {
 
-    private static Logger logger = LogManager.getLogger(Main_02_15_01.class);
+    private static final Logger logger = LogManager.getLogger(Main_02_15_01.class);
     private static final ConnectionManager connectionManager = ConnectionManagerImpl.getINSTANCE();
 
     public static void main(String[] args) {

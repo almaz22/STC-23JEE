@@ -19,12 +19,12 @@ import java.util.List;
 public class UserDAOImpl implements UserDAO{
 
     private final Connection connection;
-    private final String SELECT_ALL_USERS = "SELECT id, name, role, phone, email FROM users";
-    private final String SELECT_USER = "SELECT id, name, role, phone, email FROM users WHERE id = ? AND name = ?";
-    private final String INSERT_USER = "INSERT INTO users VALUES (?, ?, ?, ?, ?)";
-    private final String DELETE_USER = "DELETE FROM users WHERE id = ?";
+    public static final String SELECT_ALL_USERS = "SELECT id, name, role, phone, email FROM users";
+    public static final String SELECT_USER = "SELECT id, name, role, phone, email FROM users WHERE id = ? AND name = ?";
+    public static final String INSERT_USER = "INSERT INTO users VALUES (?, ?, ?, ?, ?)";
+    public static final String DELETE_USER = "DELETE FROM users WHERE id = ?";
 
-    private Logger logger = LogManager.getLogger(UserDAOImpl.class);
+    private final Logger logger = LogManager.getLogger(UserDAOImpl.class);
 
     public UserDAOImpl(Connection connection) {
         this.connection = connection;
@@ -55,8 +55,10 @@ public class UserDAOImpl implements UserDAO{
     @Override
     public User getUser(long id, String name) {
         User user = new User();
-        try(PreparedStatement statement = connection.prepareStatement(SELECT_USER);
-        ResultSet resultSet = statement.executeQuery()) {
+        try(PreparedStatement statement = connection.prepareStatement(SELECT_USER)) {
+            statement.setLong(1, id);
+            statement.setString(2, name);
+            ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 user.setId(resultSet.getLong(1));
                 user.setName(resultSet.getString(2));
