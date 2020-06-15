@@ -1,7 +1,5 @@
 package part1.lesson02.task01;
 
-import java.util.Scanner;
-
 /**
  * NullPointerExceptionDemo
  * Класс для моделирования ошибки «NullPointerException».
@@ -39,15 +37,5 @@ public class NullPointerExceptionDemo {
         // Верная реализация
         NullPointerExceptionDemo nullPointerExceptionDemo1 = new NullPointerExceptionDemo("Hello, World!");
         System.out.println(nullPointerExceptionDemo1.testNPE());
-    }
-
-    public void myRuntimeExceptionDemo() {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Say: \"Hello, World!\"");
-        String helloWorld = in.nextLine();
-
-        if (!helloWorld.toLowerCase().contains("hello"))
-            throw new RuntimeException("Не поздоровался!");
-        System.out.println("Hello, World!");
     }
 }
