@@ -27,7 +27,7 @@ import static org.mockito.MockitoAnnotations.initMocks;
  * @author Almaz_Kamalov
  */
 class UserDAOImplTest {
-    private static final Logger logger = LogManager.getLogger(UserDAOImplTest.class);
+    private static final Logger LOGGER = LogManager.getLogger(UserDAOImplTest.class);
 
     private UserDAOImpl userDAO;
     private Connection connection;
@@ -38,7 +38,7 @@ class UserDAOImplTest {
 
     @BeforeEach
     void setUp() {
-        logger.trace("setUp in UserDAOImplTest");
+        LOGGER.trace("setUp in UserDAOImplTest");
         initMocks(this);
         connection  = mock(Connection.class);
         userDAO = spy(new UserDAOImpl(connection));
@@ -46,19 +46,19 @@ class UserDAOImplTest {
 
     @AfterEach
     void tearDown() {
-        logger.trace("tearDown in UserDAOImplTest");
+        LOGGER.trace("tearDown in UserDAOImplTest");
     }
 
     @Test
     void initializeUserDAOImpl() {
-        logger.trace("initializeUserDAOImpl in UserDAOImplTest");
+        LOGGER.trace("initializeUserDAOImpl in UserDAOImplTest");
         assumeTrue(connection != null);
         assertDoesNotThrow(() -> new UserDAOImpl(connection));
     }
 
     @Test
     void getUsers() throws SQLException {
-        logger.trace("getUsers in UserDAOImplTest");
+        LOGGER.trace("getUsers in UserDAOImplTest");
         doReturn(preparedStatement).when(connection).prepareStatement(UserDAOImpl.SELECT_ALL_USERS);
         doReturn(resultSetMock).when(preparedStatement).executeQuery();
         when(resultSetMock.next()).thenReturn(true,false);
@@ -81,7 +81,7 @@ class UserDAOImplTest {
 
     @Test
     void getUser() throws SQLException {
-        logger.trace("getUser in UserDAOImplTest");
+        LOGGER.trace("getUser in UserDAOImplTest");
         doReturn(preparedStatement).when(connection).prepareStatement(UserDAOImpl.SELECT_USER);
         doReturn(resultSetMock).when(preparedStatement).executeQuery();
         when(resultSetMock.next()).thenReturn(true,false);
@@ -104,7 +104,7 @@ class UserDAOImplTest {
 
     @Test
     void addUsers() throws SQLException {
-        logger.trace("addUsers in UserDAOImplTest");
+        LOGGER.trace("addUsers in UserDAOImplTest");
         doReturn(preparedStatement).when(connection).prepareStatement(UserDAOImpl.INSERT_USER);
 
         List<User> users = new ArrayList<>();
@@ -124,7 +124,7 @@ class UserDAOImplTest {
 
     @Test
     void addUser() throws SQLException {
-        logger.trace("addUser in UserDAOImplTest");
+        LOGGER.trace("addUser in UserDAOImplTest");
         doReturn(preparedStatement).when(connection).prepareStatement(UserDAOImpl.INSERT_USER);
 
         User user = new User();
@@ -142,7 +142,7 @@ class UserDAOImplTest {
 
     @Test
     void removeUsers() throws SQLException {
-        logger.trace("removeUsers in UserDAOImplTest");
+        LOGGER.trace("removeUsers in UserDAOImplTest");
         doReturn(preparedStatement).when(connection).prepareStatement(UserDAOImpl.DELETE_USER);
 
         List<User> users = new ArrayList<>();
@@ -162,7 +162,7 @@ class UserDAOImplTest {
 
     @Test
     void removeUser() throws SQLException {
-        logger.trace("removeUser in UserDAOImplTest");
+        LOGGER.trace("removeUser in UserDAOImplTest");
         doReturn(preparedStatement).when(connection).prepareStatement(UserDAOImpl.INSERT_USER);
 
         User user = new User();

@@ -23,7 +23,7 @@ public class UserRoleDAOImpl implements UserRoleDAO{
     public static final String INSERT_USER_ROLE = "INSERT INTO user_roles VALUES (?, ?, ?)";
     public static final String UPDATE_USER_ROLE = "UPDATE user_roles SET role_id = ? WHERE user_id = ?";
 
-    private final Logger logger = LogManager.getLogger(UserRoleDAOImpl.class);
+    private static final Logger LOGGER = LogManager.getLogger(UserRoleDAOImpl.class);
 
     public UserRoleDAOImpl(Connection connection) {
         this.connection = connection;
@@ -41,10 +41,10 @@ public class UserRoleDAOImpl implements UserRoleDAO{
                 userRole.setRoleId(resultSet.getInt(3));
                 userRoles.add(userRole);
             }
-            logger.info("Get User Roles");
+            LOGGER.info("Get User Roles");
         } catch (SQLException throwables) {
 //            throwables.printStackTrace();
-            logger.error(throwables);
+            LOGGER.error(throwables);
         }
         return userRoles;
     }
@@ -56,11 +56,11 @@ public class UserRoleDAOImpl implements UserRoleDAO{
             statement.setLong(2, userRole.getUserId());
             statement.setInt(3, userRole.getRoleId());
             statement.executeUpdate();
-            logger.info("Add User Role");
+            LOGGER.info("Add User Role");
             return true;
         } catch (SQLException throwables) {
 //            throwables.printStackTrace();
-            logger.error(throwables);
+            LOGGER.error(throwables);
             return false;
         }
     }
@@ -71,11 +71,11 @@ public class UserRoleDAOImpl implements UserRoleDAO{
             statement.setInt(1, roleId);
             statement.setLong(2, userId);
             statement.executeUpdate();
-            logger.info("Update User Role");
+            LOGGER.info("Update User Role");
             return true;
         } catch (SQLException throwables) {
 //            throwables.printStackTrace();
-            logger.error(throwables);
+            LOGGER.error(throwables);
             return false;
         }
     }

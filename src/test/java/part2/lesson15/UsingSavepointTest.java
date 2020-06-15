@@ -23,14 +23,14 @@ import static org.mockito.MockitoAnnotations.initMocks;
  * @author Almaz_Kamalov
  */
 class UsingSavepointTest {
-    private static final Logger logger = LogManager.getLogger(UsingSavepointTest.class);
+    private static final Logger LOGGER = LogManager.getLogger(UsingSavepointTest.class);
 
     private UsingSavepoint savepoint;
     private Connection connection;
 
     @BeforeAll
     static void reNewDataBase() throws SQLException {
-        logger.trace("UsingSavepointTest: Recreate database");
+        LOGGER.trace("UsingSavepointTest: Recreate database");
         Connection connection = ConnectionManagerImpl.getINSTANCE().getConnection();
         DBUtil.newDatabase(connection);
         connection.close();
@@ -38,7 +38,7 @@ class UsingSavepointTest {
 
     @BeforeEach
     void setUp() {
-        logger.trace("UsingSavepointTest: setUp");
+        LOGGER.trace("UsingSavepointTest: setUp");
         initMocks(this);
         connection = spy(ConnectionManagerImpl.getINSTANCE().getConnection());
         savepoint = spy(new UsingSavepoint(connection));
@@ -46,20 +46,20 @@ class UsingSavepointTest {
 
     @AfterEach
     void tearDown() throws SQLException {
-        logger.trace("UsingSavepointTest: tearDown");
+        LOGGER.trace("UsingSavepointTest: tearDown");
         connection.close();
     }
 
     @Test
     void useSavepointWithoutRollback() throws SQLException {
-        logger.trace("UsingSavepointTest: useSavepointWithoutRollback");
+        LOGGER.trace("UsingSavepointTest: useSavepointWithoutRollback");
         savepoint.useSavepoint(3,4);
         verify(connection, never()).rollback(any());
     }
 
     @Test
     void useSavepointWithRollback() throws SQLException {
-        logger.trace("UsingSavepointTest: useSavepointWithRollback");
+        LOGGER.trace("UsingSavepointTest: useSavepointWithRollback");
         savepoint.useSavepoint(5,5);
         verify(connection, atLeastOnce()).rollback(any());
     }

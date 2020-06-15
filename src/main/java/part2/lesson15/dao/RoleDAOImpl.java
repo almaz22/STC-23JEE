@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class RoleDAOImpl implements RoleDAO {
     private final Connection connection;
-    private final Logger logger = LogManager.getLogger(RoleDAOImpl.class);
+    private static final Logger LOGGER = LogManager.getLogger(RoleDAOImpl.class);
 
     public static final String SELECT_ROLES = "SELECT id, description FROM roles";
     public static final String INSERT_ROLE = "INSERT INTO roles VALUES (?, ?)";
@@ -39,10 +39,10 @@ public class RoleDAOImpl implements RoleDAO {
                 role.setDescription(resultSet.getString(2));
                 roles.add(role);
             }
-            logger.info("Get Roles");
+            LOGGER.info("Get Roles");
         } catch (SQLException throwables) {
 //            throwables.printStackTrace();
-            logger.error("RoleDAOImpl: " + throwables);
+            LOGGER.error("RoleDAOImpl: " + throwables);
         }
         return roles;
     }
@@ -53,11 +53,11 @@ public class RoleDAOImpl implements RoleDAO {
             statement.setInt(1, id);
             statement.setString(2, description);
             statement.executeUpdate();
-            logger.info("Add Role");
+            LOGGER.info("Add Role");
             return true;
         } catch (SQLException throwables) {
 //            throwables.printStackTrace();
-            logger.error("RoleDAOImpl: " + throwables);
+            LOGGER.error("RoleDAOImpl: " + throwables);
             return false;
         }
     }
@@ -67,11 +67,11 @@ public class RoleDAOImpl implements RoleDAO {
         try(PreparedStatement statement = connection.prepareStatement(DELETE_ROLE)) {
             statement.setInt(1, id);
             statement.executeUpdate();
-            logger.info("Remove Role");
+            LOGGER.info("Remove Role");
             return true;
         } catch (SQLException throwables) {
 //            throwables.printStackTrace();
-            logger.error("RoleDAOImpl: " + throwables);
+            LOGGER.error("RoleDAOImpl: " + throwables);
             return false;
         }
     }

@@ -16,7 +16,7 @@ import java.sql.Savepoint;
 public class UsingSavepoint {
     private final Connection connection;
 
-    private Logger logger = LogManager.getLogger(UsingSavepoint.class);
+    private static final Logger LOGGER = LogManager.getLogger(UsingSavepoint.class);
 
     public UsingSavepoint(Connection connection) {
         this.connection = connection;
@@ -27,39 +27,40 @@ public class UsingSavepoint {
         RoleDAOImpl roleDAO = new RoleDAOImpl(connection);
         try{
             connection.setAutoCommit(false);
-            logger.info("Disable Auto Commit");
+            LOGGER.info("Disable Auto Commit");
             roleDAO.addRole(idRoleA, "Role A"); // commit to DB
             savepoint = connection.setSavepoint("AddRoleA");
-            logger.info("Savepoint Role A");
+            LOGGER.info("Savepoint Role A");
         } catch (SQLException throwables) {
 //            throwables.printStackTrace();
-            logger.error(throwables);
+            LOGGER.error(throwables);
         }
         try{
             roleDAO.addRole(idRoleB, "Role B"); // commit to DB
             savepoint = connection.setSavepoint("AddRoleB");
-            logger.info("Savepoint Role B");
+            LOGGER.info("Savepoint Role B");
         } catch (SQLException throwables) {
 //            throwables.printStackTrace();
-            logger.error(throwables);
+            LOGGER.error(throwables);
             if (savepoint != null) {
                 try {
                     connection.rollback(savepoint);
-                    logger.info("Rollback to savepoint");
+                    LOGGER.info("Rollback to savepoint");
                 } catch (SQLException e) {
 //                    e.printStackTrace();
-                    logger.error(throwables);
+                    LOGGER.error(throwables);
                 }
             }
         }
         finally {
             try {
                 connection.commit();
-                logger.info("Commit");
+                LOGGER.info("Commit");
                 connection.setAutoCommit(true);
-                logger.info("Enable Auto Commit");
+                LOGGER.info("Enable Auto Commit");
             } catch (SQLException throwables) {
-                throwables.printStackTrace();
+//                throwables.printStackTrace();
+                LOGGER.error(throwables);
             }
         }
     }

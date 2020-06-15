@@ -24,7 +24,7 @@ public class UserDAOImpl implements UserDAO{
     public static final String INSERT_USER = "INSERT INTO users VALUES (?, ?, ?, ?, ?)";
     public static final String DELETE_USER = "DELETE FROM users WHERE id = ?";
 
-    private final Logger logger = LogManager.getLogger(UserDAOImpl.class);
+    private static final Logger LOGGER = LogManager.getLogger(UserDAOImpl.class);
 
     public UserDAOImpl(Connection connection) {
         this.connection = connection;
@@ -44,10 +44,10 @@ public class UserDAOImpl implements UserDAO{
                 user.setEmail(resultSet.getString(5));
                 users.add(user);
             }
-            logger.info("Get Users");
+            LOGGER.info("Get Users");
         } catch (SQLException throwables) {
 //            throwables.printStackTrace();
-            logger.error(throwables);
+            LOGGER.error(throwables);
         }
         return users;
     }
@@ -66,10 +66,10 @@ public class UserDAOImpl implements UserDAO{
                 user.setPhone(resultSet.getString(4));
                 user.setEmail(resultSet.getString(5));
             }
-            logger.info("Get User");
+            LOGGER.info("Get User");
         } catch (SQLException throwables) {
 //            throwables.printStackTrace();
-            logger.error(throwables);
+            LOGGER.error(throwables);
         }
         return user;
     }
@@ -86,11 +86,11 @@ public class UserDAOImpl implements UserDAO{
                     statement.addBatch();
                 }
                 statement.executeBatch();
-                logger.info("Add Users");
+                LOGGER.info("Add Users");
                 return true;
             } catch (SQLException throwables) {
 //                throwables.printStackTrace();
-                logger.error(throwables);
+                LOGGER.error(throwables);
                 return false;
             }
         }
@@ -106,11 +106,11 @@ public class UserDAOImpl implements UserDAO{
                 statement.setString(3, user.getPhone());
                 statement.setString(4, user.getEmail());
                 statement.executeUpdate();
-                logger.info("Add User");
+                LOGGER.info("Add User");
                 return true;
             } catch (SQLException throwables) {
 //                throwables.printStackTrace();
-                logger.error(throwables);
+                LOGGER.error(throwables);
                 return false;
             }
         }
@@ -126,11 +126,11 @@ public class UserDAOImpl implements UserDAO{
                     statement.addBatch();
                 }
                 statement.executeBatch();
-                logger.info("Remove Users");
+                LOGGER.info("Remove Users");
                 return true;
             } catch (SQLException throwables) {
 //                throwables.printStackTrace();
-                logger.error(throwables);
+                LOGGER.error(throwables);
                 return false;
             }
         }
@@ -143,11 +143,11 @@ public class UserDAOImpl implements UserDAO{
             try(PreparedStatement statement = connection.prepareStatement(DELETE_USER)) {
                 statement.setLong(1, user.getId());
                 statement.executeUpdate();
-                logger.info("Remove User");
+                LOGGER.info("Remove User");
                 return true;
             } catch (SQLException throwables) {
 //                throwables.printStackTrace();
-                logger.error(throwables);
+                LOGGER.error(throwables);
                 return false;
             }
         }

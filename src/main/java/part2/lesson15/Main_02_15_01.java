@@ -28,35 +28,35 @@ import java.sql.SQLException;
  */
 public class Main_02_15_01 {
 
-    private static final Logger logger = LogManager.getLogger(Main_02_15_01.class);
+    private static final Logger LOGGER = LogManager.getLogger(Main_02_15_01.class);
     private static final ConnectionManager connectionManager = ConnectionManagerImpl.getINSTANCE();
 
     public static void main(String[] args) {
 
-        logger.debug("Main_02_15_01 is started");
+        LOGGER.debug("Main_02_15_01 is started");
         try (Connection connection = connectionManager.getConnection()) {
-            logger.debug("Recreate database");
+            LOGGER.debug("Recreate database");
             DBUtil.newDatabase(connection);
-            logger.debug("Database created");
-            logger.debug("Using Savepoint");
+            LOGGER.debug("Database created");
+            LOGGER.debug("Using Savepoint");
             UsingSavepoint usingSavepoint = new UsingSavepoint(connection);
-            logger.debug("Savepoint initialized");
+            LOGGER.debug("Savepoint initialized");
 
             // Используем savepoint
             // Если withoutTroubleInSavepoint = true, то без rollback записываем данные,
             // в противном случае возникнет ошибка при записи и будет использован rollback
             boolean withoutTroubleInSavepoint = true;
             if (withoutTroubleInSavepoint) {
-                logger.debug("Use savepoint without trouble");
+                LOGGER.debug("Use savepoint without trouble");
                 usingSavepoint.useSavepoint(3,4);
             } else {
-                logger.debug("Use savepoint with trouble");
+                LOGGER.debug("Use savepoint with trouble");
                 usingSavepoint.useSavepoint(3, 3);
             }
 
         } catch (SQLException throwables) {
 //            throwables.printStackTrace();
-            logger.error("Catch error in Main: " + throwables);
+            LOGGER.error("Catch error in Main: " + throwables);
         }
     }
 }

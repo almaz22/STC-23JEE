@@ -22,7 +22,7 @@ import static org.mockito.MockitoAnnotations.initMocks;
  * @author Almaz_Kamalov
  */
 class UserRoleDAOImplTest {
-    private static final Logger logger = LogManager.getLogger(UserRoleDAOImplTest.class);
+    private static final Logger LOGGER = LogManager.getLogger(UserRoleDAOImplTest.class);
 
     private UserRoleDAOImpl userRoleDAO;
     private Connection connection;
@@ -33,7 +33,7 @@ class UserRoleDAOImplTest {
 
     @BeforeEach
     void setUp() {
-        logger.trace("setUp in UserRoleDAOImplTest");
+        LOGGER.trace("setUp in UserRoleDAOImplTest");
         initMocks(this);
         connection  = mock(Connection.class);
         userRoleDAO = spy(new UserRoleDAOImpl(connection));
@@ -41,19 +41,19 @@ class UserRoleDAOImplTest {
 
     @AfterEach
     void tearDown() {
-        logger.trace("tearDown in UserRoleDAOImplTest");
+        LOGGER.trace("tearDown in UserRoleDAOImplTest");
     }
 
     @Test
     void initializeUserRoleDAOImpl() {
-        logger.trace("initializeUserRoleDAOImpl in UserRoleDAOImplTest");
+        LOGGER.trace("initializeUserRoleDAOImpl in UserRoleDAOImplTest");
         assumeTrue(connection != null);
         assertDoesNotThrow(() -> new UserRoleDAOImpl(connection));
     }
 
     @Test
     void getUserRoles() throws SQLException {
-        logger.trace("getUserRoles in UserRoleDAOImplTest");
+        LOGGER.trace("getUserRoles in UserRoleDAOImplTest");
         doReturn(preparedStatement).when(connection).prepareStatement(UserRoleDAOImpl.SELECT_ALL_USER_ROLES);
         doReturn(resultSetMock).when(preparedStatement).executeQuery();
         when(resultSetMock.next()).thenReturn(true,false);
@@ -72,7 +72,7 @@ class UserRoleDAOImplTest {
 
     @Test
     void addUserRole() throws SQLException {
-        logger.trace("addUserRole in UserRoleDAOImplTest");
+        LOGGER.trace("addUserRole in UserRoleDAOImplTest");
         doReturn(preparedStatement).when(connection).prepareStatement(UserRoleDAOImpl.INSERT_USER_ROLE);
 
         UserRole userRole = new UserRole();
@@ -88,7 +88,7 @@ class UserRoleDAOImplTest {
 
     @Test
     void changeUserRole() throws SQLException {
-        logger.trace("changeUserRole in UserRoleDAOImplTest");
+        LOGGER.trace("changeUserRole in UserRoleDAOImplTest");
         doReturn(preparedStatement).when(connection).prepareStatement(UserRoleDAOImpl.UPDATE_USER_ROLE);
 
         boolean result = userRoleDAO.changeUserRole(1L, 2);
