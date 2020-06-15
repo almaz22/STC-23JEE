@@ -1,22 +1,22 @@
 package part1.lesson02.task01;
 
 /**
- * HelloWorld
+ * NullPointerExceptionDemo
  * Класс для моделирования ошибки «NullPointerException».
  *
  * @author Almaz_Kamalov
  */
-public class HelloWorld {
+public class NullPointerExceptionDemo {
 
     private String helloWorld;
     public String getHelloWorld() {
         return helloWorld;
     }
 
-    public HelloWorld() {
+    public NullPointerExceptionDemo() {
     }
 
-    public HelloWorld(String helloWorld) {
+    public NullPointerExceptionDemo(String helloWorld) {
         this.helloWorld = helloWorld;
     }
 
@@ -31,12 +31,12 @@ public class HelloWorld {
 
     public static void main(String[] args)  {
         // Неверная реализация
-        HelloWorld helloWorld = new HelloWorld();
-        System.out.println(helloWorld.testNPE());
+        NullPointerExceptionDemo nullPointerExceptionDemo = new NullPointerExceptionDemo();
+        System.out.println(nullPointerExceptionDemo.testNPE());
 
         // Верная реализация
-        HelloWorld helloWorld1 = new HelloWorld("Hello, World!");
-        System.out.println(helloWorld1.testNPE());
+        NullPointerExceptionDemo nullPointerExceptionDemo1 = new NullPointerExceptionDemo("Hello, World!");
+        System.out.println(nullPointerExceptionDemo1.testNPE());
     }
 
 }
