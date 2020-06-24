@@ -1,4 +1,4 @@
-package part2.lesson15.connection;
+package part2.lesson22.connection;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,6 +13,8 @@ import java.sql.SQLException;
  *
  * @author Almaz_Kamalov
  */
+@EJB
+@MyConnect
 public class ConnectionManagerImpl implements ConnectionManager {
 
     private static final Logger LOGGER = LogManager.getLogger(ConnectionManagerImpl.class);
@@ -28,7 +30,7 @@ public class ConnectionManagerImpl implements ConnectionManager {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/postgres",
+                    "jdbc:postgresql://postgres:5432/postgres",
                     "postgres",
                     "qwerty");
         } catch (SQLException | ClassNotFoundException e) {

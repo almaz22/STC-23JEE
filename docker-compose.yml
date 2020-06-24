@@ -1,0 +1,35 @@
+version: "3.7"
+
+services:
+  tomcat:
+    build:
+      context: .
+      network: host
+    networks:
+      - my_no_inet
+    ports:
+      - 8080:8080
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: qwerty
+      POSTGRES_DB: postgres
+    networks:
+      - my_no_inet
+    ports:
+      - 5432:5432
+  adminer:
+    image: adminer
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - 9999:8080
+    networks:
+      - my_no_inet
+networks:
+  my_no_inet:
+    driver: bridge
+    external: true
