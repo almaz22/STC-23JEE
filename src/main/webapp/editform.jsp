@@ -8,7 +8,7 @@
 <c:set target="${mobile}" property="price" value="${mobile.price}" />
 <c:set target="${mobile}" property="manufacturer" value="${mobile.manufacturer}" />
 
-<h1>Editing a mobile</h1>
+<h1>Edit mobile</h1>
 <form method="post" action="${pageContext.request.contextPath}/editmobile" autocomplete="off">
     <div class="form-group">
         <label for="id">ID</label>

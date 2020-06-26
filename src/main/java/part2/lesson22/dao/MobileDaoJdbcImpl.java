@@ -71,7 +71,7 @@ public class MobileDaoJdbcImpl implements MobileDao {
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            LOGGER.error("Some thing wrong in updateMobile method", throwables);
         }
         return false;
     }
@@ -84,7 +84,7 @@ public class MobileDaoJdbcImpl implements MobileDao {
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            LOGGER.error("Some thing wrong in deleteMobile method", throwables);
         }
         return false;
     }

@@ -1,5 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<head>
+   <title>All Mobiles</title>
+</head>
 <table class="table">
    <thead>
    <tr>

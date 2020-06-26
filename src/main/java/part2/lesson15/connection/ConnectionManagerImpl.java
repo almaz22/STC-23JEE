@@ -3,7 +3,6 @@ package part2.lesson15.connection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.ejb.EJB;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

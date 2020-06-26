@@ -17,18 +17,15 @@ import java.util.Collection;
 @WebServlet(urlPatterns = "/allmobiles", name = "Mobiles")
 public class AllMobilesServlet extends HttpServlet {
     private MobileDao mobileDao;
-    private final Logger LOGGER = LogManager.getLogger(AppContextListener.class);
 
     @Override
     public void init() throws ServletException {
-        LOGGER.info("init AllMobileServlet");
         mobileDao = (MobileDao) getServletContext().getAttribute("dao");
         super.init();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOGGER.info("doGet AllMobileServlet");
         Collection<Mobile> mobiles = mobileDao.getAllMobile();
         req.setAttribute("mobiles", mobiles);
         req.setAttribute("PageTitle", "Mobiles");

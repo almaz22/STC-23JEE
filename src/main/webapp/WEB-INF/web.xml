@@ -8,6 +8,10 @@
         <param-name>isDao</param-name>
         <param-value>true</param-value>
     </context-param>
+    <context-param>
+        <param-name>isUserDao</param-name>
+        <param-value>true</param-value>
+    </context-param>
 <!--
 
     <listener>

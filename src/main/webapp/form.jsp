@@ -2,9 +2,9 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 
 <jsp:useBean id="mobile" class="part2.lesson22.pojo.Mobile" />
-    <c:set target="${mobile}" property="model" value="Enter model" />
-    <jsp:setProperty name="mobile" property="price" value="0" />
-    <jsp:setProperty name="mobile" property="manufacturer" value="Enter manufacturer" />
+<jsp:setProperty name="mobile" property="model" value="Enter model" />
+<jsp:setProperty name="mobile" property="price" value="0" />
+<jsp:setProperty name="mobile" property="manufacturer" value="Enter manufacturer" />
 
 <h1>Adding a new mobile</h1>
 <form method="post" action="${pageContext.request.contextPath}/addmobile" autocomplete="off">
